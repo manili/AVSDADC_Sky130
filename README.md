@@ -304,7 +304,7 @@ To run the iVerilog simulation on your local machine, you should do the followin
 
 - [Sai Charan Lanka](https://github.com/lankasaicharan), Electronics Background from India
 - [Mohammad A. Nili](https://github.com/manili), M.S. Student at SRBIAU
-- [Sheryl Serrao](https://github.com/sherylcorina), Undergraduate Student, Mumbai University
+- [Sheryl Serrao](https://github.com/sherylcorina), B.S. Student at Mumbai University
 
 # Acknowledgements
 
