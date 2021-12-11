@@ -231,6 +231,75 @@ To run the iVerilog simulation on your local machine, you should do the followin
   
   ```
 
+### Timing Management Unit Post-Routing Simulation
+
+Below is the Post-Routing simulation for the TMU:
+
+  ![tmu_post_routing_sim](/images/tmu_post_routing_sim.png)
+
+To run the iVerilog simulation on your local machine, you should do the following:
+
+  ```
+  # Make sure you are in the root directory of the AVSDADC_Sky130
+  
+  ```
+
+### Timing Management Unit Post-Layout Simulation
+
+Below is the Post-Layout simulation for the TMU:
+
+  ![tmu_post_layout_sim](/images/tmu_post_layout_sim.png)
+
+To run the iVerilog simulation on your local machine, you should do the following:
+
+  ```
+  # Make sure you are in the root directory of the AVSDADC_Sky130
+  
+  ```
+
+## SAR-Logic Implementation
+
+This unit is responsible for generating proper clock for the S&H unit from the global clock input. We implemented this Unit in a way that it can be parameterized based upon S&H and SAR-Logic implementations. It should be noted that TMU is a digital design, so it needs Physical Design (PD) by the OpenLane flow.
+
+### SAR-Logic RTL Simulation
+
+Below is the RTL simulation for the SAR-Logic:
+
+  ![sar_logic_rtl_sim](/images/sar_logic_rtl_sim.png)
+
+To run the iVerilog simulation on your local machine, you should do the following:
+
+  ```
+  # Make sure you are in the root directory of the AVSDADC_Sky130
+  
+  ```
+
+### SAR-Logic Post-Routing Simulation
+
+Below is the Post-Routing simulation for the SAR-Logic:
+
+  ![tmu_post_routing_sim](/images/sar_logic_post_routing_sim.png)
+
+To run the iVerilog simulation on your local machine, you should do the following:
+
+  ```
+  # Make sure you are in the root directory of the AVSDADC_Sky130
+  
+  ```
+
+### SAR-Logic Post-Layout Simulation
+
+Below is the Post-Layout simulation for the SAR-Logic:
+
+  ![tmu_post_layout_sim](/images/sar_logic_post_layout_sim.png)
+
+To run the iVerilog simulation on your local machine, you should do the following:
+
+  ```
+  # Make sure you are in the root directory of the AVSDADC_Sky130
+  
+  ```
+
 # Contributors
 
 - [Sai Charan Lanka](https://github.com/lankasaicharan), Electronics Background from India
