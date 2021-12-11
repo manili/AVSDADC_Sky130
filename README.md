@@ -96,11 +96,11 @@ python3 -m pip install pyyaml click
 
 Look into chapter 32 for details of NgSpice installation
 
-First download the tarball from http://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35.tar.gz, then untar it.
+First download the tarball from [here](http://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35.tar.gz), then do the following:
 
 ```
-tar -zxvf <tarball name>
-cd <tarball name>
+tar -zxvf <tarball path>
+cd <untar path>
 mkdir release
 cd release/
 ../configure --with-x --enable-xspice --disable-debug --enable-cider --with-readline=yes
@@ -113,7 +113,6 @@ which ngspice
 
 ```
 git clone https://github.com/StefanSchippers/xschem.git
-./configure && make
 cd xschem/
 ./configure && make
 sudo make install
@@ -147,6 +146,8 @@ which netgen
 ```
 
 ## Openlane and Sky130 PDK Installation Instructions
+
+https://github.com/The-OpenROAD-Project/OpenLane#setting-up-openlane
 
 ```
 git clone https://github.com/The-OpenROAD-Project/OpenLane.git
