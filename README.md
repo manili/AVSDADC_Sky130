@@ -1,5 +1,23 @@
-## 10bit ADC
+# AVSDADC_Sky130
 
+AVSDADC_Sky130 is a 10-bit SAR ADC with 3.3v of analog voltage and 1.8v of digital voltage and 1 off-chip external voltage reference.
+
+# Table of Contents
+
+- [Introduction to the AVSDADC_Sky130](#introduction-to-the-avsdadc_sky130)
+  - [AVSDADC_Sky130 architecture](#avsdadc_sky130-architecture)
+
+# Introduction to the AVSDADC_Sky130
+
+AVSDADC_Sky130 is going to be the first 10-bit SAR-ADC by Sky130 technology. So it will open new doors to other people, designing and using such open-source IP core in the future. Our team hope that it will be possible to tape-out the design in the 5th SkyWater/Google shuttle (MPW5).
+
+## AVSDADC_Sky130 architecture
+
+ADC or Analog-to-Digital Convertor is a system that converts an analog signal to a digital number representing the magnitude of the voltage or current. There are several ADC architectures. Due to the complexity and the need for precisely matched components, not all but the most specialized ADCs are implemented as ICs. These typically take the form of MOS mixed-signal IC chips that integrate both analog and digital circuit.
+
+This work is going to use Successive-Approximation ADC architecture in the design. A SAR-ADC uses a comparator and a binary-search to successively narrow a range that contains the input voltage. Successive approximation register (SAR) and the output of the digital to analog converter is updated for a comparison over a narrower range. The SAR register is going to be 10 bits in this work and we’ll use Sky130 as tech node.
+
+#
 This repo contains source files of comparator and sample and hold components for a 10-bit ADC.
 
 List of tools used to build thses files :
