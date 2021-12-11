@@ -6,6 +6,12 @@ AVSDADC_Sky130 is a 10-bit SAR ADC with 3.3v of analog voltage and 1.8v of digit
 
 - [Introduction to the AVSDADC_Sky130](#introduction-to-the-avsdadc_sky130)
   - [AVSDADC_Sky130 architecture](#avsdadc_sky130-architecture)
+  - [Successive-Approximation Algorithm](#successive-approximation-algorithm)
+  - [Sample and Hold Unit](#sample-and-hold-unit)
+  - [Comparator Unit](#comparator-unit)
+  - [SAR-Logic Unit](#sar-logic-unit)
+  - [DAC Unit](#dac-unit)
+  - [Timing Management Unit](#timing-management-unit)
 
 # Introduction to the AVSDADC_Sky130
 
@@ -14,7 +20,39 @@ AVSDADC_Sky130 is going to be the first 10-bit SAR-ADC by Sky130 technology. So 
 ## AVSDADC_Sky130 architecture
 
 ADC or Analog-to-Digital Convertor is a system that converts an analog signal to a digital number representing the magnitude of the voltage or current. There are several ADC architectures. Due to the complexity and the need for precisely matched components, not all but the most specialized ADCs are implemented as ICs. These typically take the form of MOS mixed-signal IC chips that integrate both analog and digital circuit.
+
 This work is going to use Successive-Approximation ADC architecture in the design. A SAR-ADC uses a comparator and a binary-search to successively narrow a range that contains the input voltage. Successive approximation register (SAR) and the output of the digital to analog converter is updated for a comparison over a narrower range. The SAR register is going to be 10 bits in this work and we’ll use Sky130 as tech node.
+
+## Successive-Approximation Algorithm
+
+The successive-approximation Analog-to-Digital Converter circuit typically consists of four chief sub-circuits:
+
+  1. A sample-and-hold circuit to get the input voltage of `Vin`.
+  2. An analog voltage comparator that compares `Vin` to the output of the internal DAC and outputs the result of the comparison to the `successive-approximation register (SAR)`.
+  3. A `successive-approximation register` sub-circuit designed to supply an approximate digital code of `Vin` to the internal DAC.
+  4. An internal reference DAC that, for comparison with `Vref`, supplies the comparator with an analog voltage equal to the digital code output of the `SARin`.
+
+The `successive-approximation register` is initialized so that the most significant bit is equal to a digital 1. This code is fed into the DAC, which then supplies the analog equivalent of this digital code (`Vref/2`) into the comparator circuit for comparison with the sampled input voltage. If this analog voltage exceeds `Vin`, then the comparator causes the `SAR` to reset this bit; otherwise, the bit is left as 1. Then the next bit is set to 1 and the same test is done, continuing this binary-search until every bit in the `SAR` has been tested. The resulting code is the digital approximation of the sampled input voltage and is finally output by the `SAR` at the `end of the conversion (EOC)`.
+
+## Sample and Hold Unit
+
+As the name suggests, a S&H Circuit samples the input analog signal based on a sampling command and holds the output value at its output until the next sampling command is arrived.
+
+## Comparator Unit
+
+The Comparator compares one analog voltage level with another analog voltage level, or some preset reference voltage, and produces an output signal based on this voltage comparison.
+
+## SAR-Logic Unit
+
+The SAR logic determines the digital output of the MSB based on the comparison result of the comparator. If the output of the comparison circuit is 1, the MSB digital output does not change. If the output of the comparison circuit is 0, the MSB digital output does becomes 0. For a 10-bit ADC it will take 10+2 clock cycles to find a proper value
+
+## DAC Unit
+
+The DAC is an internal Digital-to-Analog Converter that acquires its input from SAR register and convert it to analog signal. This project will use C-2C DAC instead of R-2R DAC.
+
+## Timing Management Unit
+
+D-type Flip-Flop is as a binary divider, for Frequency Division or as a “divide-by-2” counter. A shift register will be used to implement such architecture. The output clock must be low for at least 12 cycles of the main input clock (it is related to SAR Logic) and at least 1 cycle high. However the actual cycle numbers depend upon S&H implementation.
 
 #
 This repo contains source files of comparator and sample and hold components for a 10-bit ADC.
