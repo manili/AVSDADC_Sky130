@@ -20,10 +20,18 @@ AVSDADC_Sky130 is a 10-bit SAR ADC with 3.3v of analog voltage and 1.8v of digit
   - [Netgen Installation Instructions](#netgen-installation-instructions)
   - [Openlane and Sky130 PDK Installation Instructions](#openlane-and-sky130-pdk-installation-instructions)
 - [AVSDADC_Sky130 sub-components implementation](#avsdadc_sky130-sub-components-implementation)
-  - [Comparator](#comparator)
+  - [Comparator Implementation](#comparator-implementation)
     - [Comparator Pre-Layout Simulation](#comparator-pre-layout-simulation)
-  - [Sample and Hold](#sample-and-hold)
+  - [Sample and Hold Implementation](#sample-and-hold-implementation)
     - [Sample and Hold Pre-Layout Simulation](#sample-and-hold-pre-layout-simulation)
+  - [Timing Management Unit Implementation](#timing-management-unit-implementation)
+    - [Timing Management Unit RTL Simulation](#timing-management-unit-rtl-simulation)
+    - [Timing Management Unit Post-Routing Simulation](#timing-management-unit-post-routing-simulation)
+    - [Timing Management Unit Post-Layout Simulation](#timing-management-unit-post-layout-simulation)
+  - [SAR-Logic Implementation](#sar-logic-implementation)
+    - [SAR-Logic RTL Simulation](#sar-logic-rtl-simulation)
+    - [SAR-Logic Post-Routing Simulation](#sar-logic-post-routing-simulation)
+    - [SAR-Logic Post-Layout Simulation](#sar-logic-post-layout-simulation)
 - [Contributors](#contributors)
 - [Acknowledgements](#acknowledgements)
 
@@ -172,7 +180,7 @@ In this section we are going to show how to implement different components of th
   cd AVSDADC_Sky130
   ```
 
-## Comparator
+## Comparator Implementation
 
 Comparator specifications are taken from [avsdcmp_3v3_sky130](https://github.com/vsdip/avsdcmp_3v3_sky130) project. This comparator is having zero hystersis. 
 
@@ -189,7 +197,7 @@ To run the Spice simulation on your local machine, you should do the following:
   ngspice src/comparator/comparator.spice
   ```
 
-## Sample and Hold
+## Sample and Hold Implementation
 
 This is a simple S&H circuit simulated with a sinusoidal wave of freq 10k and clock with freq 0.2MHz. The time-period is uneven with more time for sample and less time for hold phase.
 
@@ -206,7 +214,7 @@ To run the Spice simulation on your local machine, you should do the following:
   ngspice src/s_and_h/simple_sh.spice
   ```
 
-## Timing Management Unit
+## Timing Management Unit Implementation
 
 This unit is responsible for generating proper clock for the S&H unit from the global clock input. We implemented this Unit in a way that it can be parameterized based upon S&H and SAR-Logic implementations. It should be noted that TMU is a digital design, so it needs Physical Design (PD) by the OpenLane flow.
 
