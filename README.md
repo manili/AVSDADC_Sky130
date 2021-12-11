@@ -228,7 +228,11 @@ To run the iVerilog simulation on your local machine, you should do the followin
 
   ```
   # Make sure you are in the root directory of the AVSDADC_Sky130
-  
+  cd src/sar_and_tmu/
+  iverilog testbench.v
+  ./a.out
+  gtkwave testbench.vcd
+  # Choose rst, clk, and clk_out signals
   ```
 
 ### Timing Management Unit Post-Routing Simulation
@@ -284,7 +288,11 @@ To run the iVerilog simulation on your local machine, you should do the followin
 
   ```
   # Make sure you are in the root directory of the AVSDADC_Sky130
-  
+  cd src/sar_and_tmu/
+  iverilog testbench.v
+  ./a.out
+  gtkwave testbench.vcd
+  # Choose rst, clk, cmp, and sar_out[9:0] signals
   ```
 
 ### SAR-Logic Post-Layout Simulation
