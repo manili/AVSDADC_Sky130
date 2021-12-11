@@ -1,0 +1,14 @@
+.lib "/home/alex/eda/OpenLane/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice" tt
+
+XM1 out clk inp 0 sky130_fd_pr__nfet_01v8 L=0.15 W=0.6 
+C1 out 0 0.02p m=1
+
+vin inp 0 sin (0 1v 10k 0 0)
+v_clk clk 0 PULSE(0 1 1n 1n 1n 4u 5u)
+
+.tran 1n 100u
+.control
+run
+plot v(inp) v(clk) v(out)
+.endc
+.end
