@@ -15,25 +15,23 @@ List of tools used to build thses files :
 #### Dependencies
 
 ```
-sudo apt install python3-tk tcl-dev tk-dev m4 libx11-dev gcc mesa-common-dev libglu1-mesa-dev
-```
-
-#### Docker
-
-```
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-apt-cache policy docker-ce
-sudo systemctl status docker
-sudo apt install docker-ce
-sudo systemctl status docker
-which docker
+# General needed packages
+sudo apt install make gcc git iverilog gtkwave docker.io
+# Python and Python3 needed package and package manager
+sudo apt install python python3 python3-pip python3-tk
+# Magic dependencies
+sudo apt install m4 csh tcsh libx11-dev tcl-dev tk-dev mesa-common-dev libglu1-mesa-dev libcairo2-dev libncurses-dev
+# NgSpice dependencies
+sudo apt install bison flex libx11-dev libxaw7-dev libgtk2.0-dev libreadline-dev
+# Make sure that the docker is accessable
+sudo chmod 666 /var/run/docker.sock
+# Openlane Python3 dependencies
+python3 -m pip install pyyaml click
 ```
 
 #### Ngspice
 
-[Ngspice Manual](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download )
+[Ngspice Manual](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download)
 
 Look into chapter 32 for details of NgSpice installation
 
@@ -42,7 +40,6 @@ First download the tarball from http://sourceforge.net/projects/ngspice/files/ng
 ```
 tar -zxvf <tarball name>
 cd <tarball name>
-sudo apt install bison flex libx11-dev libxaw7-dev libgtk2.0-dev libreadline-dev
 mkdir release
 cd release/
 ../configure --with-x --enable-xspice --disable-debug --enable-cider --with-readline=yes
@@ -59,6 +56,7 @@ git clone https://github.com/StefanSchippers/xschem.git
 cd xschem/
 ./configure && make
 sudo make install
+which xschem
 ```
 
 #### Magic
@@ -67,7 +65,6 @@ http://opencircuitdesign.com/magic/index.html
 
 ```
 git clone git://opencircuitdesign.com/magic
-sudo apt-get install m4 tcsh csh libx11-dev libcairo2-dev libglu1-mesa-dev libncurses-dev
 cd magic/
 ./configure
 make
@@ -90,10 +87,7 @@ which netgen
 
 #### Openlane
 
-Repo - https://github.com/The-OpenROAD-Project/OpenLane
-
 ```
-python3 -m pip install pyyaml click
 git clone https://github.com/The-OpenROAD-Project/OpenLane.git
 cd OpenLane/
 sudo make pull-openlane
@@ -122,10 +116,10 @@ Below is the pre-layout simulation for Sample and Hold Circuit
 ### How to run
 
 ```
-git clone https://github.com/lankasaicharan/adc-src-files
-cd adc-src-files
-ngspice comparator.spice
-ngspice simple_sh.spice
+git clone https://github.com/manili/AVSDADC_Sky130
+cd AVSDADC_Sky130/
+ngspice src/comparator/comparator.spice
+ngspice src/s_and_h/simple_sh.spice
 ```
 
 You will see above simulation graphs for these ngspice runs.
