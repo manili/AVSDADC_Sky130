@@ -74,105 +74,103 @@ D-type Flip-Flop is as a binary divider, for Frequency Division or as a “divid
 
 First, we need to install the following softwares, so that we can continue the design:
 
-* Ngspice
-* Xschem
-* Magic
-* Netgen
-* Openlane and Sky130 PDK
+  * Ngspice
+  * Xschem
+  * Magic
+  * Netgen
+  * Openlane and Sky130 PDK
 
 ## Dependencies Installation Instructions
 
-```
-# General needed packages
-sudo apt install make gcc git iverilog gtkwave docker.io
-# Python and Python3 needed package and package manager
-sudo apt install python python3 python3-pip python3-tk
-# Magic dependencies
-sudo apt install m4 csh tcsh libx11-dev tcl-dev tk-dev mesa-common-dev libglu1-mesa-dev libcairo2-dev libncurses-dev
-# NgSpice dependencies
-sudo apt install bison flex libx11-dev libxaw7-dev libgtk2.0-dev libreadline-dev
-# Make sure that the docker is accessable
-sudo chmod 666 /var/run/docker.sock
-# Openlane Python3 dependencies
-python3 -m pip install pyyaml click
-```
+  ```
+  # General needed packages
+  sudo apt install make gcc git iverilog gtkwave docker.io
+  # Python and Python3 needed package and package manager
+  sudo apt install python python3 python3-pip python3-tk
+  # Magic dependencies
+  sudo apt install m4 csh tcsh libx11-dev tcl-dev tk-dev mesa-common-dev libglu1-mesa-dev libcairo2-dev libncurses-dev
+  # NgSpice dependencies
+  sudo apt install bison flex libx11-dev libxaw7-dev libgtk2.0-dev libreadline-dev
+  # Make sure that the docker is accessable
+  sudo chmod 666 /var/run/docker.sock
+  # Openlane Python3 dependencies
+  python3 -m pip install pyyaml click
+  ```
 
 ## Ngspice Installation Instructions
 
 [Ngspice Manual](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download)
 
-Look into chapter 32 for details of NgSpice installation
+Look into chapter 32 for details of NgSpice installation. First download the tarball from [here](http://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35.tar.gz), then do the following:
 
-First download the tarball from [here](http://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35.tar.gz), then do the following:
-
-```
-tar -zxvf <tarball path>
-cd <untar path>
-mkdir release
-cd release/
-../configure --with-x --enable-xspice --disable-debug --enable-cider --with-readline=yes
-make 2>&1 | tee make.log
-sudo make install
-which ngspice 
-```
+  ```
+  tar -zxvf <tarball path>
+  cd <untar path>
+  mkdir release
+  cd release/
+  ../configure --with-x --enable-xspice --disable-debug --enable-cider --with-readline=yes
+  make 2>&1 | tee make.log
+  sudo make install
+  which ngspice 
+  ```
 
 ## Xschem Installation Instructions
 
-```
-git clone https://github.com/StefanSchippers/xschem.git
-cd xschem/
-./configure && make
-sudo make install
-which xschem
-```
+  ```
+  git clone https://github.com/StefanSchippers/xschem.git
+  cd xschem/
+  ./configure && make
+  sudo make install
+  which xschem
+  ```
 
 ## Magic Installation Instructions
 
 http://opencircuitdesign.com/magic/index.html
 
-```
-git clone git://opencircuitdesign.com/magic
-cd magic/
-./configure
-make
-sudo make install
-which magic
-```
+  ```
+  git clone git://opencircuitdesign.com/magic
+  cd magic/
+  ./configure
+  make
+  sudo make install
+  which magic
+  ```
 
 ## Netgen Installation Instructions
 
 http://opencircuitdesign.com/netgen/index.html
 
-```
-git clone git://opencircuitdesign.com/netgen
-cd netgen/
-./configure
-sudo make
-sudo make install
-which netgen
-```
+  ```
+  git clone git://opencircuitdesign.com/netgen
+  cd netgen/
+  ./configure
+  sudo make
+  sudo make install
+  which netgen
+  ```
 
 ## Openlane and Sky130 PDK Installation Instructions
 
 https://github.com/The-OpenROAD-Project/OpenLane#setting-up-openlane
 
-```
-git clone https://github.com/The-OpenROAD-Project/OpenLane.git
-cd OpenLane/
-sudo make pull-openlane
-sudo make pdk
-sudo make test
-```
+  ```
+  git clone https://github.com/The-OpenROAD-Project/OpenLane.git
+  cd OpenLane/
+  sudo make pull-openlane
+  sudo make pdk
+  sudo make test
+  ```
 
 # AVSDADC_Sky130 sub-components implementation
 
 In this section we are going to show how to implement different components of the AVSDADC_Sky130. We tried to use existing VSD components as much as possible to boost the implementation process. Before diving into details, if you want to get your hands dirty and do everything by yourself you are highly recommended to clone this repository on your local machine by executing the following commands:
 
-```
-cd
-git clone <this repo's name (e.g. https://github.com/manili/AVSDADC_Sky130.git)>
-cd AVSDADC_Sky130
-```
+  ```
+  cd
+  git clone <this repo's name (e.g. https://github.com/manili/AVSDADC_Sky130.git)>
+  cd AVSDADC_Sky130
+  ```
 
 ## Comparator
 
@@ -182,14 +180,14 @@ Comparator specifications are taken from [avsdcmp_3v3_sky130](https://github.com
 
 Below is the pre-layout Spice simulation for the Comparator circuit:
 
-![comparator_prelayout_sim](/images/comparator_prelayout_sim.png)
+  ![comparator_prelayout_sim](/images/comparator_prelayout_sim.png)
 
 To run the Spice simulation on your local machine, you should do the following:
 
-```
-# Make sure you are in the root directory of the AVSDADC_Sky130
-ngspice src/comparator/comparator.spice
-```
+  ```
+  # Make sure you are in the root directory of the AVSDADC_Sky130
+  ngspice src/comparator/comparator.spice
+  ```
 
 ## Sample and Hold
 
@@ -199,12 +197,31 @@ This is a simple S&H circuit simulated with a sinusoidal wave of freq 10k and cl
 
 Below is the pre-layout simulation for the Sample and Hold circuit:
 
-![sample_hold_prelayout_sim](/images/sample_hold_prelayout_sim.png)
+  ![sample_hold_prelayout_sim](/images/sample_hold_prelayout_sim.png)
 
-```
-# Make sure you are in the root directory of the AVSDADC_Sky130
-ngspice src/s_and_h/simple_sh.spice
-```
+To run the Spice simulation on your local machine, you should do the following:
+
+  ```
+  # Make sure you are in the root directory of the AVSDADC_Sky130
+  ngspice src/s_and_h/simple_sh.spice
+  ```
+
+## Timing Management Unit
+
+This unit is responsible for generating proper clock for the S&H unit from the global clock input. We implemented this Unit in a way that it can be parameterized based upon S&H and SAR-Logic implementations. It should be noted that TMU is a digital design, so it needs Physical Design (PD) by the OpenLane flow.
+
+### Timing Management Unit RTL Simulation
+
+Below is the RTL simulation for the TMU:
+
+  ![tmu_rtl_sim](/images/tmu_rtl_sim.png)
+
+To run the iVerilog simulation on your local machine, you should do the following:
+
+  ```
+  # Make sure you are in the root directory of the AVSDADC_Sky130
+  
+  ```
 
 # Contributors
 
