@@ -19,6 +19,11 @@ AVSDADC_Sky130 is a 10-bit SAR ADC with 3.3v of analog voltage and 1.8v of digit
   - [Magic Installation Instructions](#magic-installation-instructions)
   - [Netgen Installation Instructions](#netgen-installation-instructions)
   - [Openlane and Sky130 PDK Installation Instructions](#openlane-and-sky130-pdk-installation-instructions)
+- [AVSDADC_Sky130 sub-components implementation](#avsdadc_sky130-sub-components-implementation)
+  - [Comparator](#comparator)
+    - [Comparator Pre-Layout Simulation](#comparator-pre-layout-simulation)
+  - [Sample and Hold](#sample-and-hold)
+    - [Sample and Hold Pre-Layout Simulation](#sample-and-hold-pre-layout-simulation)
 
 # Introduction to the AVSDADC_Sky130
 
@@ -157,32 +162,44 @@ sudo make pdk
 sudo make test
 ```
 
----
+# AVSDADC_Sky130 sub-components implementation
 
-### Components
-This repo contains source files of comparator and sample and hold components for a 10-bit ADC.
-#### Comparator
-Comparator specifications are taken from vsdcmp project. This comparator is having zero hystersis. 
-
-Below is the pre-layout simulation for the comparator. 
-
-![Comparator-Prelayout-Simulations](/images/comparator_prelayout_sim.png)
-
-#### Sample and Hold Circuits
-
-This is a simple S&H circuit simulated with a sinusiodal wave of freq 10k and clock with freq 0.2MHz. The timeperiod is uneven with more time for sample and less time for hold phase. 
-
-Below is the pre-layout simulation for Sample and Hold Circuit
-
-![S&H-Prelayout-Simulations](/images/sample_hold_prelayout_sim.png)
-
-### How to run
+In this section we are going to show how to implement different components of the AVSDADC_Sky130. We tried to use existing VSD components as much as possible to boost the implementation process. Before diving into details, if you want to get your hands dirty and do everything by yourself you are highly recommended to clone this repository on your local machine by executing the following commands:
 
 ```
-git clone https://github.com/manili/AVSDADC_Sky130
-cd AVSDADC_Sky130/
+cd
+git clone <this repo's name (e.g. https://github.com/manili/AVSDADC_Sky130.git)>
+cd AVSDADC_Sky130
+```
+
+## Comparator
+
+Comparator specifications are taken from [avsdcmp_3v3_sky130](https://github.com/vsdip/avsdcmp_3v3_sky130) project. This comparator is having zero hystersis. 
+
+### Comparator Pre-Layout Simulation
+
+Below is the pre-layout Spice simulation for the Comparator circuit:
+
+![comparator_prelayout_sim](/images/comparator_prelayout_sim.png)
+
+To run the Spice simulation on your local machine, you should do the following:
+
+```
+# Make sure you are in the root directory of the AVSDADC_Sky130
 ngspice src/comparator/comparator.spice
+```
+
+## Sample and Hold
+
+This is a simple S&H circuit simulated with a sinusoidal wave of freq 10k and clock with freq 0.2MHz. The time-period is uneven with more time for sample and less time for hold phase.
+
+### Sample and Hold Pre-Layout Simulation
+
+Below is the pre-layout simulation for the Sample and Hold circuit:
+
+![sample_hold_prelayout_sim](/images/sample_hold_prelayout_sim.png)
+
+```
+# Make sure you are in the root directory of the AVSDADC_Sky130
 ngspice src/s_and_h/simple_sh.spice
 ```
-
-You will see above simulation graphs for these ngspice runs.
