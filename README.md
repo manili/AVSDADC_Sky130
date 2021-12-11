@@ -263,7 +263,7 @@ To run the iVerilog simulation on your local machine, you should do the followin
 
 ## SAR-Logic Implementation
 
-This unit is responsible for generating proper clock for the S&H unit from the global clock input. We implemented this Unit in a way that it can be parameterized based upon S&H and SAR-Logic implementations. It should be noted that TMU is a digital design, so it needs Physical Design (PD) by the OpenLane flow.
+SAR-Logic is a 10-bit register which increment and decrement based on the SAR algorithm which pointed out [here](#successive-approximation-algorithm). It should be noted that SAR-Logic is a digital design, so it needs Physical Design (PD) by the OpenLane flow.
 
 ### SAR-Logic RTL Simulation
 
