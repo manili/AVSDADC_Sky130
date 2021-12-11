@@ -3,6 +3,7 @@
 `ifdef USE_POWER_PINS
     `include "primitives.v"
     `include "sky130_fd_sc_hd.v"
+    `include "post_routing_digital_part.v"
 `else
     `include "digital_part.v"
 `endif
