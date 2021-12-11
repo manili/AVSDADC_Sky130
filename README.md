@@ -12,6 +12,13 @@ AVSDADC_Sky130 is a 10-bit SAR ADC with 3.3v of analog voltage and 1.8v of digit
   - [SAR-Logic Unit](#sar-logic-unit)
   - [DAC Unit](#dac-unit)
   - [Timing Management Unit](#timing-management-unit)
+- [Prerequisites and Softwares to Install](#prerequisites-and-softwares-to-install)
+  - [Dependencies Installation Instructions](#dependencies-installation-instructions)
+  - [Ngspice Installation Instructions](#ngspice-installation-instructions)
+  - [Xschem Installation Instructions](#xschem-installation-instructions)
+  - [Magic Installation Instructions](#magic-installation-instructions)
+  - [Netgen Installation Instructions](#netgen-installation-instructions)
+  - [Openlane and Sky130 PDK Installation Instructions](#openlane-and-sky130-pdk-installation-instructions)
 
 # Introduction to the AVSDADC_Sky130
 
@@ -54,20 +61,19 @@ The DAC is an internal Digital-to-Analog Converter that acquires its input from 
 
 D-type Flip-Flop is as a binary divider, for Frequency Division or as a “divide-by-2” counter. A shift register will be used to implement such architecture. The output clock must be low for at least 12 cycles of the main input clock (it is related to SAR Logic) and at least 1 cycle high. However the actual cycle numbers depend upon S&H implementation.
 
-#
-This repo contains source files of comparator and sample and hold components for a 10-bit ADC.
+# Prerequisites and Softwares to Install
 
-List of tools used to build thses files :
+**Please note that we used Ubuntu 20.04 as our environment**
+
+First, we need to install the following softwares, so that we can continue the design:
 
 * Ngspice
 * Xschem
-* PDK (sky130A tech node)
+* Magic
+* Netgen
+* Openlane and Sky130 PDK
 
-### Tool Installation instructions
-
-**(Tested on 17th Nov 2021 - platform ubuntu 20.04.3 version)**
-
-#### Dependencies
+## Dependencies Installation Instructions
 
 ```
 # General needed packages
@@ -84,7 +90,7 @@ sudo chmod 666 /var/run/docker.sock
 python3 -m pip install pyyaml click
 ```
 
-#### Ngspice
+## Ngspice Installation Instructions
 
 [Ngspice Manual](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download)
 
@@ -103,7 +109,7 @@ sudo make install
 which ngspice 
 ```
 
-#### Xschem
+## Xschem Installation Instructions
 
 ```
 git clone https://github.com/StefanSchippers/xschem.git
@@ -114,7 +120,7 @@ sudo make install
 which xschem
 ```
 
-#### Magic
+## Magic Installation Instructions
 
 http://opencircuitdesign.com/magic/index.html
 
@@ -127,7 +133,7 @@ sudo make install
 which magic
 ```
 
-#### Netgen
+## Netgen Installation Instructions
 
 http://opencircuitdesign.com/netgen/index.html
 
@@ -140,7 +146,7 @@ sudo make install
 which netgen
 ```
 
-#### Openlane
+## Openlane and Sky130 PDK Installation Instructions
 
 ```
 git clone https://github.com/The-OpenROAD-Project/OpenLane.git
@@ -153,6 +159,7 @@ sudo make test
 ---
 
 ### Components
+This repo contains source files of comparator and sample and hold components for a 10-bit ADC.
 #### Comparator
 Comparator specifications are taken from vsdcmp project. This comparator is having zero hystersis. 
 
