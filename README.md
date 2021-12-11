@@ -14,7 +14,6 @@ AVSDADC_Sky130 is going to be the first 10-bit SAR-ADC by Sky130 technology. So 
 ## AVSDADC_Sky130 architecture
 
 ADC or Analog-to-Digital Convertor is a system that converts an analog signal to a digital number representing the magnitude of the voltage or current. There are several ADC architectures. Due to the complexity and the need for precisely matched components, not all but the most specialized ADCs are implemented as ICs. These typically take the form of MOS mixed-signal IC chips that integrate both analog and digital circuit.
-
 This work is going to use Successive-Approximation ADC architecture in the design. A SAR-ADC uses a comparator and a binary-search to successively narrow a range that contains the input voltage. Successive approximation register (SAR) and the output of the digital to analog converter is updated for a comparison over a narrower range. The SAR register is going to be 10 bits in this work and we’ll use Sky130 as tech node.
 
 #
