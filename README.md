@@ -262,7 +262,10 @@ To run the iVerilog simulation on your local machine, you should do the followin
 
   ```
   # Make sure you are in the root directory of the AVSDADC_Sky130
-  
+  cd src/sar_and_tmu/
+  ngspice post_layout_digital_part.spice
+  plot
+  clk rst clk_out
   ```
 
 ## SAR-Logic Implementation
@@ -290,26 +293,33 @@ To run the iVerilog simulation on your local machine, you should do the followin
 
 Below is the Post-Routing simulation for the SAR-Logic:
 
-  ![tmu_post_routing_sim](/images/sar_logic_post_routing_sim.png)
+  ![sar_logic_post_routing_sim](/images/sar_logic_post_routing_sim.png)
 
 To run the iVerilog simulation on your local machine, you should do the following:
 
   ```
   # Make sure you are in the root directory of the AVSDADC_Sky130
-  
+  cd src/sar_and_tmu/
+  iverilog -I ./gls_model -DUSE_POWER_PINS -DFUNCTIONAL -DUNIT_DELAY=#1 testbench.v
+  ./a.out
+  gtkwave testbench.vcd
+  # Choose rst, clk, cmp, and sar_out[9:0] signals
   ```
 
 ### SAR-Logic Post-Layout Simulation
 
 Below is the Post-Layout simulation for the SAR-Logic:
 
-  ![tmu_post_layout_sim](/images/sar_logic_post_layout_sim.png)
+  ![sar_logic_post_layout_sim](/images/sar_logic_post_layout_sim.png)
 
 To run the iVerilog simulation on your local machine, you should do the following:
 
   ```
   # Make sure you are in the root directory of the AVSDADC_Sky130
-  
+  cd src/sar_and_tmu/
+  ngspice post_layout_digital_part.spice
+  plot
+  clk rst cmp sar_out9 sar_out8 sar_out7 sar_out6 sar_out5 sar_out4 sar_out3 sar_out2 sar_out1
   ```
 
 # Contributors
