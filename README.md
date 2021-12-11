@@ -24,6 +24,8 @@ AVSDADC_Sky130 is a 10-bit SAR ADC with 3.3v of analog voltage and 1.8v of digit
     - [Comparator Pre-Layout Simulation](#comparator-pre-layout-simulation)
   - [Sample and Hold](#sample-and-hold)
     - [Sample and Hold Pre-Layout Simulation](#sample-and-hold-pre-layout-simulation)
+- [Contributors](#contributors)
+- [Acknowledgements](#acknowledgements)
 
 # Introduction to the AVSDADC_Sky130
 
@@ -203,3 +205,13 @@ Below is the pre-layout simulation for the Sample and Hold circuit:
 # Make sure you are in the root directory of the AVSDADC_Sky130
 ngspice src/s_and_h/simple_sh.spice
 ```
+
+# Contributors
+
+- [Sai Charan Lanka](https://github.com/lankasaicharan), Electronics Background from India
+- [Mohammad A. Nili](https://github.com/manili), M.S. Student at SRBIAU
+- [Sheryl Serrao](https://github.com/sherylcorina), Undergraduate Student, Mumbai University
+
+# Acknowledgements
+
+- [Kunal Ghosh](https://github.com/kunalg123), Co-founder, VSD Corp. Pvt. Ltd.
