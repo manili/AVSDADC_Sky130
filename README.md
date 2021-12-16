@@ -107,7 +107,7 @@ First, we need to install the following softwares, so that we can continue the d
 
 ## Ngspice Installation Instructions
 
-You can look into chapter 32 of the [Ngspice manual](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download) for details of the installation process.
+You can take a look at the chapter 32 of the [Ngspice manual](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download) for details of the installation process.
 
 First download the tarball from [here](http://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35.tar.gz), then do the following:
 
