@@ -109,7 +109,7 @@ First, we need to install the following softwares, so that we can continue the d
 
 [Ngspice Manual](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download)
 
-Look into chapter 32 for details of NgSpice installation. First download the tarball from [here](http://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35.tar.gz), then do the following:
+Look into chapter 32 for details of Ngspice installation. First download the tarball from [here](http://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35.tar.gz), then do the following:
 
   ```
   tar -zxvf <tarball path>
@@ -121,6 +121,22 @@ Look into chapter 32 for details of NgSpice installation. First download the tar
   sudo make install
   which ngspice 
   ```
+
+To use the Ngspice with multi-threading capabilities create/open a file named `.spiceinit` in the HOME directory:
+
+  ```
+  gedit $HOME/.spiceinit
+  ```
+
+Add the following line to the file (note the <Threads Count> is the number of available threads/cores in your computer):
+
+  ```
+  set num_threads=<Threads Count>
+  set ngbehavior=hsa
+  set ng_nomodcheck
+  ```
+
+Now save the file and close the editor. For more info on how to use Ngspice with Sky130 PDK, see [here](http://ngspice.sourceforge.net/applic.html).
 
 ## Xschem Installation Instructions
 
