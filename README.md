@@ -107,9 +107,7 @@ First, we need to install the following softwares, so that we can continue the d
 
 ## Ngspice Installation Instructions
 
-[Ngspice Manual](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download)
-
-Look into chapter 32 for details of Ngspice installation. First download the tarball from [here](http://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35.tar.gz), then do the following:
+Look into chapter 32 of the [Ngspice Manual](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35-manual.pdf/download) for details of Ngspice installation. First download the tarball from [here](http://sourceforge.net/projects/ngspice/files/ng-spice-rework/35/ngspice-35.tar.gz), then do the following:
 
   ```
   tar -zxvf <tarball path>
@@ -128,10 +126,10 @@ To use the Ngspice with multi-threading capabilities create/open a file named `.
   gedit $HOME/.spiceinit
   ```
 
-Add the following line to the file (note the <Threads Count> is the number of available threads/cores in your computer):
+Add the following line to the file (note the THREADS_COUNT is the number of available cores/threads in your computer):
 
   ```
-  set num_threads=<Threads Count>
+  set num_threads=THREADS_COUNT
   set ngbehavior=hsa
   set ng_nomodcheck
   ```
