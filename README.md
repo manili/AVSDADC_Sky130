@@ -116,7 +116,7 @@ Look into chapter 32 for details of NgSpice installation. First download the tar
   cd <untar path>
   mkdir release
   cd release/
-  ../configure --with-x --enable-xspice --disable-debug --enable-cider --with-readline=yes
+  ../configure --with-x --enable-xspice --enable-openmp --disable-debug --enable-cider --with-readline=yes
   make 2>&1 | tee make.log
   sudo make install
   which ngspice 
